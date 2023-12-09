@@ -8,11 +8,11 @@
 
 ### Overview
 
-It is currently impossible to get verified fiat value for VET purely on VeChain. A trusted oracle providing accurate data is required to bring in trusted data to the blockchain.
+It is currently impossible to get verified fiat value for VET and VTHO purely on VeChain. A trusted oracle providing accurate data is required to bring in trusted data to the blockchain.
 
 This project will bring VET/USD and VTHO/USD price to Vechain, allowing everyone to utilize fiat pricing in their dApps. 
 
-The main functionality will be open sourced on GitHub, to allow everyone to adapt to their own needs or suggest improvements for the future.
+The functionality will be open sourced on GitHub, to allow everyone to adapt to their own needs and run their own oracles or suggest improvements for the future.
 
 
 ### Project Details
@@ -209,7 +209,7 @@ At least one medium article and tweet will be published on how to setup access t
 
 ## Future Plans
 
-Additional oracle pairs are planned (ETH, BTC, etc.), depending on acceptance of this oracle in the community and requirements by the community.  
+Additional data feeds will be added, based on acceptance and requirements of the community.  
 Depending on the traction, on-demand-updates will be added in the future too, providing developers the ability to get smaller changes for a tiny fee.
 
 
