@@ -8,7 +8,7 @@
 
 ### Overview
 
-This project aims to bring VET/USD and VTHO/USD price to VeChain, enabling everyone to utilize fiat pricing in their dApps.
+This project aims to bring VET/USD and VTHO/USD price to Vechain, enabling everyone to utilize fiat pricing in their dApps.
 
 A data feed publishing VET/USD, VTHO/USD, and EURT/USD will provide fiat information in an on-chain contract.
 
@@ -33,7 +33,7 @@ The data can be accessed on-chain with:
 
 ```sol
 interface OracleV1 {
-    function getLatestValue(bytes32 id) public view returns (uint256 value, uint256 updatedAt);
+    function getLatestValue(bytes32 id) public view returns (uint256 value, uint64 updatedAt);
 }
 
 // id = ethers.utils.formatBytes32String("vet-usd")
@@ -108,7 +108,7 @@ sequenceDiagram
     participant Data-Sources
 
     note over Oracle-Reporter,Data-Sources: update data feed
-    loop every n-minutes
+    loop every n-seconds
       Oracle-Reporter->>Data-Sources: request data
       Data-Sources-->>Oracle-Reporter: reply or fail
 
@@ -119,7 +119,7 @@ sequenceDiagram
         Oracle-Reporter->>Oracle-Contract: get last value
         Oracle-Contract-->>Oracle-Reporter: last value + timestamp
 
-        alt value is above deviation threshold
+        alt value deviated more than deviation threshold
           Oracle-Reporter->>Oracle-Contract: update data
         else opt value is older then max age threshold
           Oracle-Reporter->>Oracle-Contract: update data
@@ -228,16 +228,15 @@ The gas fees for the updates and running the required backend will be a personal
 | 4.3 | Self-Host-Instructions  | Instructions on how to setup and run an oracle |
 
 * Delivery will be a link to a new section on docs.vechain.energy containing all relevant information needed to use the oracle on TestNet and MainNet, learn about the data quality and links to the source code.
-
+* Instructions to setup a self-hosted-instance can be used to test the complete delivery.
 
 #### Community engagement
 
 At least one medium article and tweet will be published on how to setup access the oracle. Additional support will be provided in Discord.
 
-
 ## Future Plans
 
-Additional data feeds will be added, based on acceptance and requirements of the community.  
+Additional data feeds will be added, based on acceptance and requirements of the community.
 Depending on the traction, on-demand-updates will be added in the future too, providing developers the ability to get smaller changes for a tiny fee.
 A possible extension is a new vechain.energy function for "Oracle-Services", allowing developers to setup their own oracle service from a UI only.
 
